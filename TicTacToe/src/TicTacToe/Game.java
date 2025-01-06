@@ -2,7 +2,7 @@ package TicTacToe;
 
 public class Game {
     public static void main(String[] args) {
-        System.out.println("Hello and welcome to Tic Tac Toe!");
+        System.out.println("Main: Hello and welcome to Tic Tac Toe!");
 
         int nGames = 1000;
         int[] results = new int[Result.values().length];
