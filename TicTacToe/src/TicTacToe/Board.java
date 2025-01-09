@@ -2,8 +2,8 @@ package TicTacToe;
 
 public class Board {
 
-    public static final int SIZE = 3 ;
-    public static final int WIN_STREAK = 3 ;
+    public static final int SIZE = 5 ;
+    public static final int WIN_STREAK = 4 ;
     private Mark[][] board;
     private int pieces;
 

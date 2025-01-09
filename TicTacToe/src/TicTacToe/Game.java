@@ -4,7 +4,7 @@ public class Game {
     public static void main(String[] args) {
         System.out.println("Main: Hello and welcome to Tic Tac Toe!");
 
-        int nGames = 1000;
+        int nGames = 10000;
         int[] results = new int[Result.values().length];
 
         Board board = new Board();
@@ -14,11 +14,13 @@ public class Game {
         Player humanPlayer = new HumanPlayer();
         Player randomPlayer = new RandomPlayer();
 
-        String[] strategies = {"human", "smart"};
+        String[] strategies = {"smart", "smart1"};
         System.out.printf("Playing %d games with strategies %s (as first) and %s (as second).\n", nGames, strategies[0], strategies[1]);
 
-        Player player1 = humanPlayer;
-        Player player2 = randomPlayer;
+        //Player player1 = humanPlayer;
+        //Player player2 = randomPlayer;
+        Player player1 = new Player(strategies[0]);
+        Player player2 = new Player(strategies[1]);
 
         //renderer.renderBoard(board);      // Uncomment to see the initial empty board
         for (int i = 0; i < nGames; i++) {
@@ -27,7 +29,7 @@ public class Game {
 
             // Play moves until the game is over
             for (int n = 0; n < Board.SIZE * Board.SIZE; n++) {
-                renderer.renderBoard(board);
+                //renderer.renderBoard(board);
                 player1.playTurn(board, Mark.X);    // X
                 result = board.checkResult();
                 if (result != Result.IN_PROGRESS) {

@@ -9,6 +9,7 @@ class RandomPlayer extends Player {
         super("random");
     }
 
+
     @Override
     public int[] getNextMove(Board board, String somethingElse, Mark mark) {
         int row = (int) (Math.random() * Board.SIZE);

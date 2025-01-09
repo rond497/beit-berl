@@ -50,8 +50,19 @@ public class Test
         //first = Exercise.insert(first, 10, 1);
         //first = Exercise.insert(first, 10, 12);
         //ListOp.printList(first);
+        System.out.println("Adding another 7 to better test removal:");
+        first = Exercise.insert(first, 7, 1);
+        ListOp.printList(first);
         System.out.println("Removing all 7s from the list:");
         first = Exercise.removeAll(first, 7);
         ListOp.printList(first);
+
+        int[] c = {7, 7, 7};
+        NodeInt firstG = Exercise.arrayToList(c);
+        System.out.println("Removing all 7s from the list:");
+        ListOp.printList(firstG);
+        firstG = Exercise.removeAll(firstG, 7);
+        ListOp.printList(firstG);
+
     }
 }

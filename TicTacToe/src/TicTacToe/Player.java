@@ -15,26 +15,19 @@ class Player {
         return strategy;
     }
 
-    // PlayTurn method gets the Board and the Mark of the current player, queries the user for a move,
-    // and then plays the move on the board.
+    // Get the Board and the Mark of the current player, calculate a move,
+    // and plays the move on the board.
+    // We should not expect the player to play a move that is not valid.
     public void playTurn(Board board, Mark mark) {
         int[] move;
         boolean validMove = false;
-        //while (!validMove) {
-        /*for (int k = 0; k < 10; k++) {
-            move = getNextMove(board, strategy, mark);
-            validMove = board.putMark(mark, move[0], move[1]);
-            System.out.println("Player " + mark + " plays: " + move[0] + " " + move[1] + ". k=" + k + ". validMove=" + validMove);
-            if (validMove) {
-                break;
-            }
-            //System.out.println("Invalid move, try again: " + row + " " + col);
-            //getNextMove(row, col);
-            //validMove = board.putMark(mark, row, col);
-        }*/
         move = getNextMove(board, strategy, mark);
         validMove = board.putMark(mark, move[0], move[1]);
+        if (!validMove) {
+            throw new IllegalArgumentException("No valid move found or invalid move: " + move[0] + ", " + move[1]);
+        }
     }
+    // Calculate the next move for the player
     public int[] getNextMove(Board board, String strategy, Mark mark) {
 
         switch (strategy) { // two strategies: random and human, are implemented as Subclasses
@@ -68,7 +61,7 @@ class Player {
     }
 
     private int[] getSmartMove(Board board, Mark mark) {
-        // Simplest strategy: win if possible, block if necessary, random otherwise
+        // Simplest strategy: win/block if possible (no preference), random otherwise
         // Check Win or Block are possible:
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
@@ -88,7 +81,7 @@ class Player {
     }
 
     private int[] getSmart1Move(Board board, Mark mark) {
-        // Simple strategy: win if possible, block if necessary, random otherwise
+        // Simple strategy: win if possible, then block if necessary, random otherwise
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
                 if (board.getMark(i, j) == Mark.EMPTY) {
