@@ -22,7 +22,7 @@ public class optionalExercise {
 
     /*
     Exercise 2 - after every occurrence of "aba" insert "$$".
-    I assume that after "ababa" we insert twice, after every occurrence. Easy to change.
+    I assume that after "ababa" we insert twice, after every occurrence. Easy to change that.
      */
     public String exercise2(String inputString) {
         String outputString = "";
